@@ -8,6 +8,7 @@ module Clian
     CONFIG_HOME = File.join((ENV["XDG_CONFIG_HOME"] || "~/.config"), basename)
     CONFIG_FILE = "config.yml"
     CONFIG_PATH = File.join(CONFIG_HOME, CONFIG_FILE)
+    NAMED_OPTIONS = {}
 
     def self.config_home ; CONFIG_HOME; end
     def self.config_path ; CONFIG_PATH; end
@@ -40,8 +41,7 @@ module Clian
     # register preset options
 
     def self.named_option(name, options)
-      @named_options ||= {}
-      @named_options[name] = options
+      ::Clian::Cli::NAMED_OPTIONS[name] = options
     end
 
     def self.expand_option(*names)
@@ -54,7 +54,7 @@ module Clian
 
     def self.expand_named_option(type, *names)
       names.each do |name|
-        options = @named_options[name]
+        options = ::Clian::Cli::NAMED_OPTIONS[name]
         if type == :class
           class_option name, options
         else
