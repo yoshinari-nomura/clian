@@ -27,7 +27,7 @@ module Clian
         ENV["RBENV_VERSION"] = nil
         shims_path = File.expand_path("shims", ENV["RBENV_ROOT"])
         ENV["PATH"] = shims_path + ":" + ENV["PATH"]
-        exec(File.readlink(__FILE__), *ARGV)
+        exec(File.readlink(command_path), *ARGV)
       end
 
       gemfile = File.expand_path("../../Gemfile", command_path)
