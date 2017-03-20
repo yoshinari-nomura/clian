@@ -197,5 +197,5 @@ module Clian
       end
     end
 
-  end
-end
+  end # class Cli
+end # module Clian
