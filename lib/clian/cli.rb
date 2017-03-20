@@ -5,13 +5,14 @@ module Clian
     ################################################################
     # config files
 
-    CONFIG_HOME = File.join((ENV["XDG_CONFIG_HOME"] || "~/.config"), basename)
-    CONFIG_FILE = "config.yml"
-    CONFIG_PATH = File.join(CONFIG_HOME, CONFIG_FILE)
+    DEFAULT_CONFIG_HOME = File.join((ENV["XDG_CONFIG_HOME"] ||
+                                     "~/.config"), basename)
+    DEFAULT_CONFIG_FILE = "config.yml"
+    DEFAULT_CONFIG_PATH = File.join(DEFAULT_CONFIG_HOME, DEFAULT_CONFIG_FILE)
     NAMED_OPTIONS = {}
 
-    def self.config_home ; CONFIG_HOME; end
-    def self.config_path ; CONFIG_PATH; end
+    def self.default_config_home ; DEFAULT_CONFIG_HOME; end
+    def self.default_config_path ; DEFAULT_CONFIG_PATH; end
 
     ################################################################
     # rbenv support:
@@ -67,7 +68,7 @@ module Clian
     # default options
     named_option :debug,   :desc => "Set debug flag", :type => :boolean
     named_option :profile, :desc => "Set profiler flag", :type => :boolean
-    named_option :config,  :desc => "Set config path (default: #{CONFIG_PATH})", :banner => "FILE"
+    named_option :config,  :desc => "Set config path (default: #{DEFAULT_CONFIG_PATH})", :banner => "FILE"
     named_option :dry_run, :desc => "Perform a trial run with no changes made", :type => :boolean
 
     ################################################################
@@ -155,7 +156,7 @@ module Clian
 
     def setup_global_options
       exit_on_error do
-        # @config = Clian::Config.create_from_file(options[:config] || CONFIG_PATH)
+        # @config = Clian::Config.create_from_file(options[:config] || DEFAULT_CONFIG_PATH)
         # @builder ||= Clian::Builder.new(@config)
         # if @config.general.tzid
         #  Clian.default_tzid = @config.general.tzid
