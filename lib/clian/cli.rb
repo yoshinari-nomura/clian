@@ -131,7 +131,7 @@ module Clian
 
     no_commands do
       def invoke_command(command, *args)
-        setup_global_options unless command.name == "init"
+        setup_global_options(command, *args)
         result = super
         teardown
         result
@@ -154,7 +154,7 @@ module Clian
 
     attr_reader :builder, :config, :calendar
 
-    def setup_global_options
+    def setup_global_options(command, *args)
       exit_on_error do
         # @config = Clian::Config.create_from_file(options[:config] || DEFAULT_CONFIG_PATH)
         # @builder ||= Clian::Builder.new(@config)
