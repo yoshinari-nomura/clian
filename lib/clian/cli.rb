@@ -114,7 +114,10 @@ module Clian
     def completions(*command)
       help = self.class.commands
       global_options = self.class.class_options
-      Clian::Command::Completions.new(help, global_options, command, config)
+
+      Clian::Command::Completions.new(help, global_options, command) do |banner|
+        custom_completion_for_banner(banner)
+      end
     end
 
     ################################################################
@@ -142,6 +145,10 @@ module Clian
     # private
 
     private
+
+    def custom_completion_for_banner(banner)
+      return nil
+    end
 
     def exit_on_error(&block)
       begin

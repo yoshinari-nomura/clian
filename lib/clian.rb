@@ -7,6 +7,7 @@ module Clian
 
   autoload :Authorizer,           "#{dir}/authorizer.rb"
   autoload :Cli,                  "#{dir}/cli.rb"
+  autoload :Command,              "#{dir}/command.rb"
   autoload :Config,               "#{dir}/config.rb"
   autoload :VERSION,              "#{dir}/version.rb"
 end
