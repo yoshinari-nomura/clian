@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "thor", ">= 0.19.1"
   spec.add_runtime_dependency "google-api-client", "~> 0.13"
-  spec.add_runtime_dependency "googleauth"
+  spec.add_runtime_dependency "googleauth", "~> 0.6.0"
   spec.add_runtime_dependency "launchy"
   spec.add_runtime_dependency "mail"
 
