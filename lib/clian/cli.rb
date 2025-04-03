@@ -32,7 +32,7 @@ module Clian
 
       gemfile = File.expand_path("../../Gemfile", command_path)
 
-      if File.exists?(gemfile + ".lock")
+      if File.exist?(gemfile + ".lock")
         ENV["BUNDLE_GEMFILE"] = gemfile
         require "bundler/setup"
       end

@@ -53,7 +53,7 @@ module Clian
       end
 
       def self.create_from_yaml_string(yaml_string, filename = nil)
-        hash = YAML.load(yaml_string, filename) || {}
+        hash = YAML.load(yaml_string, filename: filename) || {}
         return new(hash)
       end
 
@@ -191,7 +191,7 @@ module Clian
       end
 
       def self.create_from_file(file_name = self.default_path)
-        unless File.exists?(File.expand_path(file_name))
+        unless File.exist?(File.expand_path(file_name))
           raise ConfigurationError, "config file '#{file_name}' not found"
         end
         begin
