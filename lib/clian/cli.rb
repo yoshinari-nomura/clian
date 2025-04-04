@@ -161,6 +161,12 @@ module Clian
 
     attr_reader :builder, :config, :calendar
 
+    # exit 1 when a required argument is not provided
+    # https://github.com/rails/thor/issues/244
+    def self.exit_on_failure?
+      true
+    end
+
     def setup_global_options(command, *args)
       exit_on_error do
         # @config = Clian::Config.create_from_file(options[:config] || DEFAULT_CONFIG_PATH)
