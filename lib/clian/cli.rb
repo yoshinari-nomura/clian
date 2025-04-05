@@ -96,7 +96,7 @@ module Clian
     desc "version", "Show version"
 
     def version
-      puts Clian::VERSION
+      puts self.class::VERSION
     end
 
     ################################################################
